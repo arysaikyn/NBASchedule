@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,10 +9,10 @@ export default defineConfig({
     outDir: '../server/public',
     emptyOutDir: true
   },
-  resolve: {
-    alias: {
-      'picocss': path.resolve(__dirname, '../node_modules/@picocss/pico/css')
-    }
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
   },
   server: {
     proxy: {
